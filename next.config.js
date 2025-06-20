@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+// next.config.js
 const webpack = require('webpack')
 
 module.exports = {
@@ -17,11 +17,15 @@ module.exports = {
     ],
   },
   webpack: (config) => {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      crypto: require.resolve('crypto-browserify'),
-      stream: require.resolve('stream-browserify'),
+    // Only apply polyfill in client build
+    if (typeof config.resolve.fallback !== 'object') {
+      config.resolve.fallback = {}
     }
+
+    Object.assign(config.resolve.fallback, {
+      crypto: false, // don't crash if missing
+      stream: false,
+    })
 
     config.plugins.push(
       new webpack.ProvidePlugin({
