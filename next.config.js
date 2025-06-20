@@ -14,8 +14,8 @@ const nextConfig = {
         hostname: 'avatars.githubusercontent.com',
         port: '',
         pathname: '**',
-      },
-    ],
+      }
+    ]
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -23,18 +23,18 @@ const nextConfig = {
         ...config.resolve.fallback,
         crypto: 'crypto-browserify',
         stream: 'stream-browserify',
-        buffer: 'buffer',
+        buffer: 'buffer'
       }
 
       config.plugins.push(
         new webpack.ProvidePlugin({
-          Buffer: ['buffer', 'Buffer'],
+          Buffer: ['buffer', 'Buffer']
         })
       )
     }
 
     return config
-  },
+  }
 }
 
 module.exports = nextConfig
