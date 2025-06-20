@@ -1,7 +1,8 @@
 // next.config.js
 const webpack = require('webpack')
 
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   experimental: {
     serverActions: true,
@@ -16,24 +17,24 @@ module.exports = {
       },
     ],
   },
-  webpack: (config) => {
-    // Only apply polyfill in client build
-    if (typeof config.resolve.fallback !== 'object') {
-      config.resolve.fallback = {}
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+        buffer: require.resolve('buffer'),
+      }
+
+      config.plugins.push(
+        new webpack.ProvidePlugin({
+          Buffer: ['buffer', 'Buffer'],
+        })
+      )
     }
-
-    Object.assign(config.resolve.fallback, {
-      crypto: false, // don't crash if missing
-      stream: false,
-    })
-
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        process: 'process/browser',
-        Buffer: ['buffer', 'Buffer'],
-      })
-    )
 
     return config
   },
 }
+
+module.exports = nextConfig
