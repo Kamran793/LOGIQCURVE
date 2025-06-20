@@ -1,15 +1,6 @@
 {
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  },
-  "functions": {
-    "api/**.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "installCommand": "npm install",
   "buildCommand": "npm run build",
-  "outputDirectory": "out"
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "nodeVersion": "18.x"
 }
