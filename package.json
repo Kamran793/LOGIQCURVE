@@ -1,5 +1,5 @@
 {
-  "name": "logiqcurve",
+  "name": "codexlc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -53,5 +53,10 @@
     "postcss": "8.4.38",
     "tailwindcss": "3.4.3",
     "typescript": "5.4.5"
+  },
+  "packageManager": "pnpm@8.15.4",
+  "engines": {
+    "node": "18.x",
+    "pnpm": ">=8.0.0"
   }
 }
