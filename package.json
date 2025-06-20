@@ -41,7 +41,8 @@
     "react-textarea-autosize": "^8.4.1",
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
-    "stream-browserify": "^3.0.0"
+    "stream-browserify": "^3.0.0",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@types/node": "20.11.30",
@@ -56,6 +57,7 @@
   },
   "packageManager": "pnpm@8.15.4",
   "engines": {
-    "node": "18.x"
+    "node": "18.x",
+    "pnpm": ">=8.0.0"
   }
 }
