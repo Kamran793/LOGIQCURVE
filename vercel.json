@@ -1,6 +1,5 @@
 {
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
-  "outputDirectory": ".next",
-  "nodeVersion": "18.x"
+  "outputDirectory": ".next"
 }
