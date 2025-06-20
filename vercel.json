@@ -1,10 +1,5 @@
 {
-  "buildCommand": "pnpm run build",
-  "installCommand": "corepack enable && pnpm install",
-  "outputDirectory": ".next",
-  "build": {
-    "env": {
-      "COREPACK_ENABLE_STRICT": "0"
-    }
-  }
+  "buildCommand": "npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
+  "outputDirectory": ".next"
 }
