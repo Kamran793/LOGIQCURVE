@@ -22,7 +22,8 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "types": ["node"]  // ✅ Added to fix crypto/process/Buffer issues
   },
   "include": [
     "next-env.d.ts",
