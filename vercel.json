@@ -1,5 +1,15 @@
 {
-  "buildCommand": "bash vercel-build.sh",
-  "outputDirectory": "out",
-  "framework": "nextjs"
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "functions": {
+    "api/**.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "out"
 }
