@@ -1,4 +1,4 @@
-const webpack = require('webpack')
+const webpack = require('webpack');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,27 +13,28 @@ const nextConfig = {
         hostname: 'avatars.githubusercontent.com',
         port: '',
         pathname: '**',
-      }
-    ]
+      },
+    ],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
-        crypto: 'crypto-browserify',
-        stream: 'stream-browserify',
-        buffer: 'buffer'
-      }
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+        buffer: require.resolve('buffer'),
+      };
 
       config.plugins.push(
         new webpack.ProvidePlugin({
-          Buffer: ['buffer', 'Buffer']
+          process: 'process/browser',
+          Buffer: ['buffer', 'Buffer'],
         })
-      )
+      );
     }
 
-    return config
-  }
-}
+    return config;
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
